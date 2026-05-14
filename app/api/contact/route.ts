@@ -1,7 +1,4 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
@@ -20,21 +17,8 @@ export async function POST(request: Request) {
       );
     }
 
-    await resend.emails.send({
-      from: process.env.FROM_EMAIL!,
-      to: ["contacto@centrourologicotijuana.com"],
-      replyTo: email,
-      subject: `Nueva consulta: ${subject} — ${name}`,
-      html: `
-        <h2>Nueva solicitud de cita — Centro Urológico Tijuana</h2>
-        <p><strong>Nombre:</strong> ${name}</p>
-        <p><strong>Teléfono:</strong> ${phone || "No proporcionado"}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Motivo de consulta:</strong> ${subject}</p>
-        <p><strong>Mensaje:</strong></p>
-        <p>${message}</p>
-      `,
-    });
+    // Email sending disabled — Resend not configured yet
+    console.log("Contact form submission:", { name, phone, email, subject, message });
 
     return NextResponse.json({ ok: true });
   } catch (error) {
