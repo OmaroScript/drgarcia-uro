@@ -318,16 +318,23 @@ export default function LandingPage() {
 
       {/* ── HERO (split — navy bg, no amber) ── */}
       <section ref={heroRef as React.RefObject<HTMLElement>} id="inicio"
-        className="min-h-screen bg-navy-950 flex items-stretch overflow-hidden">
+        className="relative min-h-screen bg-navy-950 flex items-stretch overflow-hidden">
+
+        {/* Mobile background photo */}
+        <div className="absolute inset-0 md:hidden">
+          <img src={DOCTOR_PHOTO} alt="" aria-hidden="true"
+            className="w-full h-full object-cover object-top" />
+          <div className="absolute inset-0 bg-gradient-to-b from-navy-950/80 via-navy-950/65 to-navy-950/95" />
+        </div>
 
         {/* Left: text */}
-        <div className="relative z-10 flex flex-col justify-center w-full lg:w-[55%] px-6 lg:px-16 xl:px-24 pt-28 pb-20 bg-dot-grid">
+        <div className="relative z-10 flex flex-col justify-center w-full md:w-[55%] px-6 md:px-10 lg:px-16 xl:px-24 pt-28 pb-20 bg-dot-grid">
           {/* teal glow blobs */}
           <div className="absolute top-1/3 left-0 w-96 h-96 bg-teal-700/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-10 right-0 w-64 h-64 bg-teal-900/15 rounded-full blur-2xl pointer-events-none" />
 
           {/* Badge — teal, no amber */}
-          <span className="hero-badge inline-flex items-center gap-2 self-start bg-teal-500/12 border border-teal-400/25 text-teal-300 text-[10px] font-bold uppercase tracking-[0.25em] px-4 py-2 rounded-full mb-10">
+          <span className="hero-badge inline-flex items-center gap-2 self-start max-w-full bg-teal-500/12 border border-teal-400/25 text-teal-300 text-[10px] font-bold uppercase tracking-[0.25em] px-4 py-2 rounded-full mb-10">
             <CheckCircle2 className="w-3.5 h-3.5" />
             Certificado — Consejo Nacional Mexicano de Urología
           </span>
@@ -374,7 +381,7 @@ export default function LandingPage() {
         </div>
 
         {/* Right: photo */}
-        <div className="hidden lg:flex relative w-[45%] items-end overflow-hidden bg-navy-900">
+        <div className="hidden md:flex relative md:w-[45%] items-end overflow-hidden bg-navy-900">
           <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/10 to-transparent z-10 pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 to-transparent z-10 pointer-events-none" />
           <img src={DOCTOR_PHOTO} alt="Dr. Francisco Arturo García Arrieta — Urólogo Tijuana"
@@ -845,7 +852,7 @@ export default function LandingPage() {
               <div className="bg-white rounded-3xl p-8 lg:p-10 border border-slate-200 shadow-lg">
                 <h3 className="font-display font-semibold text-xl text-slate-900 mb-7">Enviar Mensaje</h3>
                 <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <Field label="Nombre"   name="name"  placeholder="Tu nombre" />
                     <Field label="Teléfono" name="phone" placeholder="664-000-0000" type="tel" />
                   </div>
