@@ -5,6 +5,7 @@ import {
   Phone, Mail, MapPin, Clock, CheckCircle2, Star, Award, Activity,
   Zap, Shield, Scissors, Droplets, Heart, AlertCircle, Cpu,
   Stethoscope, Menu, X, VolumeX, Volume2, Play, Pause, Microscope,
+  ChevronDown,
 } from "lucide-react";
 import { FaWhatsapp, FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa6";
@@ -96,6 +97,68 @@ const HOSPITALS = [
   "Hospital Ángeles Tijuana",
   "Hospital del Prado",
   "NewCity Medical Plaza",
+];
+
+const FORMACION_ITEMS = [
+  {
+    q: "Médico Cirujano",
+    a: "Formación médica de base con título de Médico Cirujano, con rotaciones clínicas en hospitales de alta especialidad en México.",
+  },
+  {
+    q: "Especialidad en Urología",
+    a: "Residencia médica en Urología avalada por la Secretaría de Salud y la Universidad Nacional. Cédula de Especialidad: 13399223. Cédula Profesional: 09691953.",
+  },
+  {
+    q: "Certificación — Consejo Nacional Mexicano de Urología (CNMU)",
+    a: "Certificado vigente por el CNMU, organismo que garantiza los más altos estándares de práctica urológica en México y que requiere actualización continua para su mantenimiento.",
+  },
+  {
+    q: "Entrenamiento en HoLEP y ThuFLEP",
+    a: "Formación avanzada en enucleación prostática con láser Holmio (HoLEP) y láser Tulio (ThuFLEP) en centros de referencia internacional. Pionero en la implementación de estas técnicas en la región fronteriza de Baja California.",
+  },
+  {
+    q: "Cirugía Robótica y Laparoscópica",
+    a: "Entrenamiento certificado en sistemas robóticos de última generación y laparoscopia avanzada para procedimientos urológicos oncológicos, reconstructivos y de mínima invasión.",
+  },
+  {
+    q: "Formación Continua Internacional",
+    a: "Participación activa en congresos, cursos y talleres en instituciones de referencia mundial, incluyendo cursos de actualización en oncología urológica, endourología y cirugía de piso pélvico.",
+  },
+];
+
+const FAQ_ITEMS = [
+  {
+    q: "¿Qué es la hiperplasia prostática benigna (HPB) y cuándo necesita cirugía?",
+    a: "La HPB es el agrandamiento no canceroso de la próstata que afecta la capacidad de orinar. Es muy frecuente en hombres mayores de 50 años. La cirugía se considera cuando los síntomas no mejoran con medicamento o cuando hay retención urinaria, infecciones recurrentes o daño renal. Técnicas como HoLEP y ThuFLEP ofrecen excelentes resultados con recuperación rápida.",
+  },
+  {
+    q: "¿Cuál es la diferencia entre HoLEP y ThuFLEP?",
+    a: "Ambas son técnicas de enucleación prostática con láser, consideradas el estándar de oro mundial. HoLEP utiliza láser Holmio y es la técnica con mayor evidencia científica. ThuFLEP usa láser Tulio, con hemostasia superior (menos sangrado) y tiempos quirúrgicos menores en ciertos casos. El Dr. Arrieta evaluará cuál es la más adecuada según tu caso específico.",
+  },
+  {
+    q: "¿Cuánto tiempo dura la recuperación tras una cirugía prostática con láser?",
+    a: "La hospitalización es de aproximadamente 24 horas. La mayoría de los pacientes retoman actividades ligeras en 3 a 5 días. Se requiere sonda vesical temporal por 1 a 2 días y seguimiento médico posterior. Comparado con la cirugía abierta tradicional, la recuperación es significativamente más rápida.",
+  },
+  {
+    q: "¿Atienden pacientes que vienen de Estados Unidos?",
+    a: "Sí. El Centro Urológico atiende regularmente a pacientes que viajan desde California y otras ciudades de EE.UU. Ofrecemos orientación en el proceso de cruce fronterizo, coordinación de estudios previos y seguimiento por WhatsApp. Tijuana está a minutos de la frontera con San Diego.",
+  },
+  {
+    q: "¿Qué debo llevar a mi primera consulta?",
+    a: "Estudios previos (análisis de sangre, ultrasonido de vías urinarias, uroflujometría si los tienes), lista de medicamentos actuales, identificación oficial y, de ser posible, resultados de consultas urológicas anteriores. No es indispensable llegar con estudios — el Dr. Arrieta puede solicitarlos en consulta.",
+  },
+  {
+    q: "¿Cómo puedo detectar a tiempo el cáncer de próstata?",
+    a: "La detección temprana se realiza con antígeno prostático específico (PSA) en sangre y tacto rectal. Se recomienda iniciar tamizaje anual a partir de los 50 años, o a los 40-45 años si hay antecedentes familiares. El diagnóstico definitivo requiere biopsia guiada por ultrasonido o resonancia magnética.",
+  },
+  {
+    q: "¿Tienen servicio de urgencias urológicas?",
+    a: "Sí, contamos con línea de urgencias disponible las 24 horas, los 7 días de la semana. Puedes comunicarte por teléfono al 664-460-5376 o por WhatsApp para evaluación de síntomas urgentes como retención urinaria aguda, cólico renal intenso o hematuria significativa.",
+  },
+  {
+    q: "¿En qué hospitales opera el Dr. Arrieta?",
+    a: "El Dr. García Arrieta tiene adscripción en Hospital MAC Tijuana, Hospital Ángeles Tijuana, Hospital del Prado y NewCity Medical Plaza. El hospital se selecciona según el tipo de procedimiento, la preferencia del paciente y la cobertura de seguro médico disponible.",
+  },
 ];
 
 /* ─── hooks ─── */
@@ -570,6 +633,37 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ── FORMACIÓN ── */}
+      <section id="formacion" className="py-24 bg-navy-950">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <AnimBlock>
+              <span className="text-teal-400 text-xs font-bold uppercase tracking-[0.3em] block mb-4">Trayectoria</span>
+              <h2 className="font-display font-bold text-white leading-none mb-6"
+                style={{ fontSize: "clamp(2rem,4vw,3rem)" }}>
+                Formación, Cursos<br />
+                <span className="text-teal-400">y Especialidades</span>
+              </h2>
+              <p className="text-slate-400 text-lg font-light leading-relaxed mb-8 max-w-md">
+                Preparación continua en las técnicas urológicas más avanzadas del mundo,
+                avalada por instituciones nacionales e internacionales de primer nivel.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["CNMU Cert.", "HoLEP", "ThuFLEP", "Robótica", "Laparoscopia"].map((tag, i) => (
+                  <span key={i} className="px-3 py-1.5 rounded-full bg-teal-500/10 border border-teal-400/20 text-teal-300 text-xs font-semibold">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </AnimBlock>
+
+            <AnimBlock delay={120}>
+              <AccordionGroup items={FORMACION_ITEMS} dark />
+            </AnimBlock>
+          </div>
+        </div>
+      </section>
+
       {/* ── HOSPITALS ── */}
       <section className="py-14 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
@@ -668,6 +762,36 @@ export default function LandingPage() {
                 </a>
               ))}
             </div>
+          </AnimBlock>
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section id="faq" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <AnimBlock className="mb-14 text-center">
+            <span className="text-teal-600 text-xs font-bold uppercase tracking-[0.3em] block mb-3">Dudas Comunes</span>
+            <h2 className="font-display font-bold text-slate-900 leading-none" style={{ fontSize: "clamp(2rem,4.5vw,3.5rem)" }}>
+              Preguntas<br />
+              <span className="text-teal-600">Frecuentes</span>
+            </h2>
+            <p className="text-slate-400 text-base font-light mt-4 max-w-lg mx-auto">
+              Resolvemos las dudas más comunes de nuestros pacientes antes de su consulta.
+            </p>
+          </AnimBlock>
+
+          <AnimBlock delay={80}>
+            <div className="max-w-3xl mx-auto">
+              <AccordionGroup items={FAQ_ITEMS} />
+            </div>
+          </AnimBlock>
+
+          <AnimBlock delay={120} className="mt-10 text-center">
+            <p className="text-slate-500 text-sm mb-4">¿Tu pregunta no está aquí?</p>
+            <a href={WA} target="_blank" rel="noreferrer"
+              className="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-500 text-white px-8 py-4 rounded-full font-bold text-sm transition-all shadow-lg shadow-teal-600/20 hover:-translate-y-0.5">
+              <FaWhatsapp className="w-5 h-5" /> Pregúntanos por WhatsApp
+            </a>
           </AnimBlock>
         </div>
       </section>
@@ -907,6 +1031,82 @@ function Field({ label, name, placeholder, type = "text" }: {
       <label htmlFor={name} className="block text-[10px] font-bold uppercase tracking-widest text-teal-600 mb-2">{label}</label>
       <input id={name} name={name} type={type} required placeholder={placeholder}
         className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent placeholder:text-slate-300" />
+    </div>
+  );
+}
+
+function AccordionGroup({ items, dark = false }: {
+  items: { q: string; a: string }[];
+  dark?: boolean;
+}) {
+  const [open, setOpen] = useState<number | null>(null);
+  return (
+    <div className={cn(
+      "rounded-2xl overflow-hidden border",
+      dark ? "border-white/8" : "border-slate-200"
+    )}>
+      {items.map((item, i) => (
+        <AccordionItem
+          key={i}
+          question={item.q}
+          answer={item.a}
+          isOpen={open === i}
+          onToggle={() => setOpen(open === i ? null : i)}
+          dark={dark}
+          isLast={i === items.length - 1}
+        />
+      ))}
+    </div>
+  );
+}
+
+function AccordionItem({ question, answer, isOpen, onToggle, dark = false, isLast = false }: {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onToggle: () => void;
+  dark?: boolean;
+  isLast?: boolean;
+}) {
+  return (
+    <div className={cn(
+      "border-b transition-colors duration-200",
+      dark
+        ? cn("border-white/8", isOpen ? "bg-white/[0.06]" : "bg-white/[0.03]")
+        : cn("border-slate-100", isOpen ? "bg-teal-50/40" : "bg-white"),
+      isLast && "border-b-0"
+    )}>
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center justify-between px-6 py-5 text-left gap-4 group"
+      >
+        <span className={cn(
+          "font-semibold text-base transition-colors leading-snug",
+          dark
+            ? cn("text-white/80 group-hover:text-teal-300", isOpen && "text-teal-300")
+            : cn("text-slate-800 group-hover:text-teal-600", isOpen && "text-teal-600")
+        )}>
+          {question}
+        </span>
+        <ChevronDown className={cn(
+          "w-5 h-5 shrink-0 transition-transform duration-300",
+          dark ? "text-teal-400" : "text-teal-500",
+          isOpen && "rotate-180"
+        )} />
+      </button>
+      <div className={cn(
+        "grid transition-all duration-300 ease-in-out",
+        isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+      )}>
+        <div className="overflow-hidden">
+          <p className={cn(
+            "px-6 pb-6 text-sm leading-relaxed font-light",
+            dark ? "text-slate-400" : "text-slate-500"
+          )}>
+            {answer}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
